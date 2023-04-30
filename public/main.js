@@ -18,7 +18,7 @@ const detectBirds = async (city) => {
     alert('Invalid API Key')
     return
   }
-
+  
   const displayData = {
     species: data.species,
     detections: data.detections,
@@ -48,7 +48,7 @@ weatherForm.addEventListener('submit', (e) => {
   if (cityInput.value === '') {
     alert('Please enter a city')
   } else {
-    fetchWeather(cityInput.value)
+    detectBirds(cityInput.value)
   }
 })
 
