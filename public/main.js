@@ -9,9 +9,6 @@ const detectBirds = async (city) => {
   const res = await fetch(url)
   const data = await res.json()
 
-  console.log(data.species)
-  console.log(data.detections)
-
   if (data.cod === '404') {
     alert('City not found')
     return
