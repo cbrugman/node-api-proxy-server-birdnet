@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 const needle = require('needle')
 const apicache = require('apicache')
+const { SlowBuffer } = require('buffer')
 
 // Env vars
 const API_BASE_URL = process.env.API_BASE_URL
@@ -25,6 +26,8 @@ router.get('/', cache('2 minutes'), async (req, res, next) => {
     
     const apiRes = await needle('get', birdweatherURL)
     const data = apiRes.body
+    
+    
     
 
     // Log the request to the public API
