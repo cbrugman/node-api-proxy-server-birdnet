@@ -19,7 +19,7 @@ router.get('/', cache('2 minutes'), async (req, res, next) => {
       [API_KEY_NAME]: API_KEY_VALUE,
       ...url.parse(req.url, true).query,
     })
-    
+        
     
     apicommand = params.get('q')
     const birdweatherURL = `${API_BASE_URL}${API_KEY_VALUE}/${apicommand}`
@@ -27,9 +27,6 @@ router.get('/', cache('2 minutes'), async (req, res, next) => {
     const apiRes = await needle('get', birdweatherURL)
     const data = apiRes.body
     
-    
-    
-
     // Log the request to the public API
     if (process.env.NODE_ENV !== 'production') {
       console.log(`REQUEST: ${birdweatherURL}`)

@@ -1,10 +1,10 @@
-const weatherDisplay = document.querySelector('.weather')
-const weatherForm = document.querySelector('#weather-form')
-const cityInput = document.querySelector('#city-input')
+const birdDisplay = document.querySelector('.birds')
+const birdForm = document.querySelector('#bird-form')
+const birdweatherInput = document.querySelector('#city-input')
 
 // Fetch weather data from API
-const detectBirds = async (city) => {
-  const url = `/api?q=${city}`
+const detectBirds = async (APIrequest) => {
+  const url = `/api?q=${APIrequest}`
   
   const res = await fetch(url)
   const data = await res.json()
@@ -21,7 +21,7 @@ const detectBirds = async (city) => {
   
   const displayData = {
     species: data.species,
-    detections: data.detections,
+    detections: data.detections, 
   }
 
   addWeatherToDOM(displayData)
@@ -29,26 +29,21 @@ const detectBirds = async (city) => {
 
 // Add display data to DOM
 const addWeatherToDOM = (data) => {
-  weatherDisplay.innerHTML = `
+  birdDisplay.innerHTML = `
     <h1>${data.species} species in</h1>
     <h2>${data.detections} detections.</h2>
   `
-  cityInput.value = ''
-}
-
-// Convert Kelvin to Fahrenheit
-const kelvinToFahrenheit = (temp) => {
-  //return Math.ceil(((temp - 273.15) * 9) / 5 + 32)
+  birdweatherInput.value = ''
 }
 
 // Event listener for form submission
-weatherForm.addEventListener('submit', (e) => {
+birdForm.addEventListener('submit', (e) => {
   e.preventDefault()
 
-  if (cityInput.value === '') {
+  if (birdweatherInput.value === '') {
     alert('Please enter a city')
   } else {
-    detectBirds(cityInput.value)
+    detectBirds(birdweatherInput.value)
   }
 })
 
