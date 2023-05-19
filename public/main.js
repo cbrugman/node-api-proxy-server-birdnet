@@ -4,8 +4,9 @@ const birdweatherInput = document.querySelector('#city-input')
 
 // Fetch weather data from API
 const detectBirds = async (APIrequest) => {
+    
   const url = `/api?q=${APIrequest}`
-  
+
   const res = await fetch(url)
   const data = await res.json()
 
